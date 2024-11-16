@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+	<title>PHP Online Editor</title>
+	<link rel="stylesheet" id="font-awesome"  href="libs/font-awesome.min.css" type="text/css" media="all" />
+	<script src="libs/jquery-2.1.4.min.js"></script>	
+	
+	<link rel="stylesheet"  href="css/php-einfach-online-php-editor.css" type="text/css" media="all" />
+	
+
+
+
+<style>
+body {
+	font-family: Arial;
+}
+
+a {
+	text-decoration: none;
+	color: #20477a;
+}
+
+.ace_editor {
+	font-size: 14px !important;
+}
+</style>
+</head>
+ 
+<body>
+
+<h2>Normal Editor</h2>
+<p>This is the defaul editor. Each editor must have the data attribute <em>data-ace-editor-id</em> with a unique id. This id
+muss also appear in the the <em>id</em> attribute for the &lt;div&gt; and the &lt;pre&gt; tags.
+</p>
+<div  class="code" id="code_1" data-ace-editor-id="1"
+	data-ace-editor-allow-execution="true" data-ace-editor-hide-vars="false" 
+	data-ace-editor-script-name="page.php" data-ace-editor-default-get="" data-ace-editor-default-post="">
+<pre class="editor" id="code_editor_1" >&lt;?php
+echo "Hi and welcome for our Online PHP Editor. The current time is: ".date("H:i:s")." &lt;br /&gt;";
+echo "Press the button below to execute the code";
+?&gt;</pre></div>
+
+
+
+<script type='text/javascript' src='libs/ace/ace.js'></script>
+<script type='text/javascript' src='libs/FileSaver.js'></script>
+<script type='text/javascript' src='js/php-einfach-online-php-editor.js'></script>
+
+<script>
+jQuery('div[data-ace-editor-id]').each(function() {
+	var url='http://execute.php-einfach.de:9999/execute.php'; 
+	//var url='proxy.php'; // In case the browser supports cross domain requests, you can use this proxy script to forward the requests over your own server
+	var language = 'en'; //Choose 'de' for German
+	new OnlinePHPEditor(this, language, url);
+});
+</script>
+
+</body>
+</html>
